@@ -1,0 +1,1131 @@
+</html><!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setembro Amarelo | Espaço de Acolhimento e Apoio Emocional</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter from Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        warmYellow: {
+                            50: '#FFDF2B',
+                            100: '#FEF08A',
+                            200: '#FDE047',
+                            300: '#FACC15',
+                            400: '#EAB308',
+                            500: '#CA8A04',
+                            800: '#854D0E',
+                        },
+                        cream: {
+                            50: '#FFFCF3',
+                            100: '#FFFBEB',
+                            200: '#FEF3C7',
+                        },
+                        mint: {
+                            50: '#F0FDF4',
+                            100: '#DCFCE7',
+                            500: '#10B981',
+                            700: '#15803D',
+                        }
+                    },
+                    keyframes: {
+                        pulseSlow: {
+                            '0%, 100%': { transform: 'scale(1)', opacity: '0.9' },
+                            '50%': { transform: 'scale(1.08)', opacity: '1' }
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-6px)' }
+                        }
+                    },
+                    animation: {
+                        'pulse-slow': 'pulseSlow 4s ease-in-out infinite',
+                        'float': 'float 3s ease-in-out infinite'
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom scrollbar and smooth UI styles */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FFFBEB;
+            color: #1E293B;
+        }
+        
+        /* Custom Breathing Ring Styles */
+        .breath-circle {
+            transition: transform 1s cubic-bezier(0.4, 0, 0.2, 1), background-color 1s ease;
+        }
+        
+        .toast-enter {
+            animation: slideUp 0.3s ease-out forwards;
+        }
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between antialiased selection:bg-amber-200 selection:text-amber-900">
+
+    <!-- TOP FIXED EMERGENCY BANNER -->
+    <div id="emergency-banner" class="bg-amber-400 text-amber-950 font-medium text-xs sm:text-sm py-2.5 px-4 sticky top-0 z-50 shadow-md transition-all duration-300">
+        <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2 text-center sm:text-left">
+            <div class="flex items-center gap-2">
+                <span class="flex h-3 w-3 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-red-600"></span>
+                </span>
+                <p>
+                    <strong class="font-bold">Precisa conversar agora?</strong> O CVV oferece apoio emocional gratuito e confidencial 24h.
+                </p>
+            </div>
+            <div class="flex items-center gap-2 shrink-0">
+                <a href="tel:188" class="bg-amber-900 hover:bg-amber-950 text-white font-bold px-3 py-1 rounded-full text-xs transition duration-200 flex items-center gap-1 shadow">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                    Ligue 188
+                </a>
+                <a href="https://cvv.org.br" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-amber-50 text-amber-900 font-semibold px-3 py-1 rounded-full text-xs transition duration-200 border border-amber-300 flex items-center gap-1">
+                    Chat Online (cvv.org.br)
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER & NAVIGATION -->
+    <header class="bg-cream-50/90 backdrop-blur-md border-b border-amber-200/60 sticky top-[37px] sm:top-[33px] z-40">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-2xl bg-amber-300 flex items-center justify-center text-amber-900 font-bold shadow-inner group-hover:scale-105 transition-transform">
+                    💛
+                </div>
+                <div>
+                    <span class="text-xl font-bold text-slate-800 tracking-tight block leading-none">Setembro<span class="text-amber-600">Amarelo</span></span>
+                    <span class="text-xs text-slate-500">Espaço Acolher & Escuta Ativa</span>
+                </div>
+            </a>
+
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex items-center space-x-1 lg:space-x-2 text-sm font-medium text-slate-700">
+                <a href="#respiracao" class="px-3 py-2 rounded-xl hover:bg-amber-100 hover:text-amber-900 transition">Respiração</a>
+                <a href="#mensagens" class="px-3 py-2 rounded-xl hover:bg-amber-100 hover:text-amber-900 transition">Mensagens</a>
+                <a href="#humor" class="px-3 py-2 rounded-xl hover:bg-amber-100 hover:text-amber-900 transition">Diário de Humor</a>
+                <a href="#sons" class="px-3 py-2 rounded-xl hover:bg-amber-100 hover:text-amber-900 transition">Sons Relaxantes</a>
+                <a href="#onde-buscar-ajuda" class="px-3 py-2 rounded-xl hover:bg-amber-100 hover:text-amber-900 transition">Rede de Apoio</a>
+            </nav>
+
+            <!-- Quick Action CTA -->
+            <a href="#emergencia" class="hidden sm:inline-flex items-center gap-1.5 bg-amber-200 hover:bg-amber-300 text-amber-900 px-4 py-2 rounded-xl text-sm font-semibold transition border border-amber-300 shadow-sm">
+                <span>Canais de Ajuda</span>
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+            </a>
+
+            <!-- Mobile menu button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-lg text-slate-700 hover:bg-amber-100 focus:outline-none" aria-label="Abrir menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+            </button>
+        </div>
+
+        <!-- Mobile Navigation Menu -->
+        <div id="mobile-menu" class="hidden md:hidden border-t border-amber-200 bg-amber-50 px-4 pt-2 pb-4 space-y-1 text-sm font-medium">
+            <a href="#respiracao" class="block px-3 py-2 rounded-lg hover:bg-amber-200 text-slate-800">Exercício de Respiração</a>
+            <a href="#mensagens" class="block px-3 py-2 rounded-lg hover:bg-amber-200 text-slate-800">Mensagens Motivacionais</a>
+            <a href="#humor" class="block px-3 py-2 rounded-lg hover:bg-amber-200 text-slate-800">Diário de Humor</a>
+            <a href="#sons" class="block px-3 py-2 rounded-lg hover:bg-amber-200 text-slate-800">Sons Relaxantes</a>
+            <a href="#onde-buscar-ajuda" class="block px-3 py-2 rounded-lg hover:bg-amber-200 text-slate-800">Onde Buscar Ajuda</a>
+            <a href="#emergencia" class="block px-3 py-2 rounded-lg bg-amber-200 text-amber-950 font-semibold text-center mt-2">Emergência - CVV 188</a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section class="relative overflow-hidden py-12 lg:py-16 bg-gradient-to-b from-amber-100/70 via-cream-100 to-cream-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                    <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-amber-200/80 text-amber-900 text-xs sm:text-sm font-medium border border-amber-300">
+                            <span>💛 Mês de Valorização da Vida</span>
+                            <span class="text-amber-500">•</span>
+                            <span>Setembro Amarelo</span>
+                        </div>
+                        
+                        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                            Sua vida importa. <br class="hidden sm:inline">
+                            <span class="text-transparent bg-clip-text bg-gradient-to-r from-amber-600 to-yellow-600">Existe apoio e esperança.</span>
+                        </h1>
+                        
+                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 font-normal leading-relaxed">
+                            Um espaço seguro desenvolvido para oferecer momentos de pausa, regulação emocional, mensagens de incentivo e orientação para encontrar atendimento psicológico e de emergência gratuito.
+                        </p>
+
+                        <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-3 pt-2">
+                            <a href="tel:188" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold text-base shadow-lg shadow-amber-300/40 hover:shadow-xl transition duration-200 flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                                Ligue para o CVV (188)
+                            </a>
+                            <a href="#respiracao" class="w-full sm:w-auto px-6 py-3.5 rounded-2xl bg-white hover:bg-slate-50 text-slate-700 font-semibold text-base border border-slate-200 shadow-sm transition flex items-center justify-center gap-2">
+                                <svg class="w-5 h-5 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                                Exercício de Calma
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Hero Visual Card -->
+                    <div class="lg:col-span-5">
+                        <div class="bg-white/80 backdrop-blur-md p-6 sm:p-8 rounded-3xl border border-amber-200/80 shadow-xl relative overflow-hidden">
+                            <div class="absolute -top-10 -right-10 w-32 h-32 bg-amber-200 rounded-full blur-2xl opacity-50"></div>
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-bold">
+                                    💬
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-slate-800 text-lg">Apoio Gratuito 24h</h3>
+                                    <p class="text-xs text-slate-500">Sigiloso, sem julgamentos e humano</p>
+                                </div>
+                            </div>
+                            <p class="text-sm text-slate-600 leading-relaxed mb-4">
+                                Falar sobre sentimentos e dores emocionais é o primeiro passo. Se você ou alguém que conhece está passando por momentos difíceis, não hesite em buscar ajuda.
+                            </p>
+                            <div class="p-3.5 bg-amber-50 rounded-2xl border border-amber-200 flex items-center justify-between text-xs font-semibold text-amber-900">
+                                <span>Atendimento via Telefone:</span>
+                                <span class="bg-amber-300 px-2.5 py-1 rounded-lg text-amber-950 font-bold">Disque 188</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ACADEMIC NOTICE / DISCLAIMER BANNER -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-2 mb-10">
+            <div class="bg-amber-100/90 border-l-4 border-amber-500 p-4 sm:p-5 rounded-r-2xl shadow-sm text-amber-950 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div class="flex items-start gap-3">
+                    <span class="text-2xl mt-0.5">⚠️</span>
+                    <div>
+                        <h4 class="font-bold text-sm sm:text-base">Aviso Importante & Projeto Acadêmico</h4>
+                        <p class="text-xs sm:text-sm text-amber-900/90 leading-snug">
+                            Este site foi desenvolvido como atividade prática de **Desenvolvimento de Sistemas** para conscientização. <strong>Esta aplicação não substitui o atendimento psicológico ou psiquiátrico profissional.</strong> Em caso de crise ou urgência, entre em contato imediatamente com o CVV (188) ou o SAMU (192).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1: DIREÇÃO DE EMERGÊNCIA (CANAYS DE AJUDA RÁPIDA) -->
+        <section id="emergencia" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <div class="mb-8 text-center sm:text-left">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Atendimento de Crise</span>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 mt-2">Canais de Ajuda Imediata</h2>
+                <p class="text-slate-600 text-sm sm:text-base">Serviços públicos e voluntários gratuitos para apoio em momentos de urgência.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Card CVV -->
+                <div class="bg-white p-6 rounded-3xl border-2 border-amber-300 shadow-lg hover:shadow-xl transition duration-300 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute top-0 right-0 bg-amber-400 text-amber-950 font-bold text-[10px] uppercase px-3 py-1 rounded-bl-xl">Principal</div>
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-800 flex items-center justify-center text-2xl font-bold mb-4">
+                            📞
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">CVV - Centro de Valorização da Vida</h3>
+                        <p class="text-xs text-amber-700 font-semibold mb-3">Atendimento 24h • Ligação Gratuita</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Apoio emocional confidencial para todas as pessoas que precisam conversar sob total sigilo.
+                        </p>
+                    </div>
+                    <div class="space-y-2">
+                        <a href="tel:188" class="w-full py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                            Ligar para 188
+                        </a>
+                        <a href="https://cvv.org.br" target="_blank" rel="noopener" class="w-full py-2.5 bg-amber-50 hover:bg-amber-100 text-amber-900 font-semibold rounded-xl text-center text-xs transition border border-amber-200 block">
+                            Acessar Chat no site oficial
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card SAMU -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-red-100 text-red-700 flex items-center justify-center text-2xl font-bold mb-4">
+                            🚑
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">SAMU 192</h3>
+                        <p class="text-xs text-red-600 font-semibold mb-3">Urgência e Emergência Médica</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Para situações de crise grave de saúde mental ou risco imediato à integridade física.
+                        </p>
+                    </div>
+                    <a href="tel:192" class="w-full py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow">
+                        Ligar 192 (SAMU)
+                    </a>
+                </div>
+
+                <!-- Card Pode Falar / Outros -->
+                <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-md hover:shadow-lg transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center text-2xl font-bold mb-4">
+                            📱
+                        </div>
+                        <h3 class="text-xl font-bold text-slate-800">Pode Falar (UNICEF)</h3>
+                        <p class="text-xs text-teal-700 font-semibold mb-3">Canal Digital para Jovens (13 a 24 anos)</p>
+                        <p class="text-sm text-slate-600 leading-relaxed mb-6">
+                            Plataforma anônima mantida pelo UNICEF para escuta qualificada e apoio psicológico jovem.
+                        </p>
+                    </div>
+                    <a href="https://www.podefalar.org.br" target="_blank" rel="noopener" class="w-full py-3 bg-teal-600 hover:bg-teal-700 text-white font-bold rounded-xl text-center text-sm transition flex items-center justify-center gap-2 shadow">
+                        Acessar Pode Falar
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: RECURSOS INTERATIVOS DE APOIO EMOCIONAL -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-200/80 px-3 py-1 rounded-full">Ferramentas Interativas</span>
+                <h2 class="text-3xl font-extrabold text-slate-800 mt-3">Recursos de Autocuidado & Regulação</h2>
+                <p class="text-slate-600 text-base mt-2">Práticas rápidas desenvolvidas para auxiliar na desaceleração da ansiedade e registro emocional.</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+                
+                <!-- TOOL 1: RESPIRAÇÃO GUIADA (4-7-8) -->
+                <div id="respiracao" class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🫁</span>
+                                <h3 class="text-xl font-bold text-slate-800">Respiração Guiada (Técnica 4-7-8)</h3>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">Ansiolítico Natural</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+                            Inspire em 4 segundos, segure por 7 segundos e expire suavemente pela boca em 8 segundos.
+                        </p>
+
+                        <!-- Visual Breathing Ring Container -->
+                        <div class="flex flex-col items-center justify-center my-6 py-6 bg-amber-50/50 rounded-2xl border border-amber-100 relative overflow-hidden">
+                            <div id="breath-circle" class="breath-circle w-40 h-40 sm:w-48 sm:h-48 rounded-full bg-amber-200 border-4 border-amber-400 flex flex-col items-center justify-center shadow-lg transform scale-100">
+                                <span id="breath-text" class="text-lg sm:text-xl font-bold text-amber-950 text-center px-2">Pronto?</span>
+                                <span id="breath-timer" class="text-2xl font-extrabold text-amber-900 mt-1">4s</span>
+                            </div>
+                            <div class="mt-6 flex items-center gap-4 text-xs font-semibold text-slate-600">
+                                <span>Ciclos Completados: <strong id="breath-cycles" class="text-amber-700 text-sm font-bold">0</strong></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Breathing Controls -->
+                    <div class="flex items-center justify-center gap-3">
+                        <button id="btn-start-breath" onclick="toggleBreathing()" class="px-6 py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-sm transition shadow">
+                            Iniciar Respiração
+                        </button>
+                        <button id="btn-reset-breath" onclick="resetBreathing()" class="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition">
+                            Reiniciar
+                        </button>
+                    </div>
+                </div>
+
+                <!-- TOOL 2: MENSAGENS MOTIVACIONAIS -->
+                <div id="mensagens" class="lg:col-span-6 bg-white p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">✨</span>
+                                <h3 class="text-xl font-bold text-slate-800">Afirmações & Mensagens de Apoio</h3>
+                            </div>
+                            <span class="text-xs font-semibold text-amber-800 bg-amber-100 px-2.5 py-1 rounded-lg">Gerador Instantâneo</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 mb-6">
+                            Palavras acolhedoras para momentos em que você precisa de lembretes sobre sua força e valor.
+                        </p>
+
+                        <!-- Card Displaying Message -->
+                        <div class="bg-gradient-to-br from-amber-50 to-cream-100 border border-amber-200 p-6 rounded-2xl min-h-[170px] flex flex-col justify-center items-center text-center relative shadow-inner my-2">
+                            <svg class="w-8 h-8 text-amber-300 absolute top-3 left-3 opacity-60" fill="currentColor" viewBox="0 0 24 24"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg>
+                            <p id="motivational-quote" class="text-slate-800 font-medium text-base sm:text-lg italic px-4 leading-relaxed">
+                                "Você não precisa carregar tudo sozinho. Pedir ajuda é um ato de profunda coragem."
+                            </p>
+                            <span id="quote-author" class="text-xs font-semibold text-amber-700 mt-3">— Mensagem de Acolhimento</span>
+                        </div>
+                    </div>
+
+                    <!-- Action buttons -->
+                    <div class="flex items-center gap-3 mt-6">
+                        <button onclick="generateMotivationalMessage()" class="flex-1 py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-sm transition flex items-center justify-center gap-2 shadow">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                            Nova Mensagem
+                        </button>
+                        <button onclick="copyQuoteToClipboard()" class="px-4 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 font-semibold rounded-xl text-sm transition flex items-center gap-1.5" title="Copiar texto">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 5H6a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2v-1M8 5a2 2 0 002 2h2a2 2 0 002-2M8 5a2 2 0 012-2h2a2 2 0 012 2m0 0h2a2 2 0 012 2v3m2 4H10m0 0l3-3m-3 3l3 3"/></svg>
+                            Copiar
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mt-8">
+                
+                <!-- TOOL 3: DIÁRIO DE HUMOR (MOOD TRACKER) -->
+                <div id="humor" class="lg:col-span-7 bg-white p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-md">
+                    <div class="flex items-center justify-between mb-4">
+                        <div class="flex items-center gap-3">
+                            <span class="text-2xl">📓</span>
+                            <h3 class="text-xl font-bold text-slate-800">Diário de Humor (Mood Tracker)</h3>
+                        </div>
+                        <span class="text-xs font-semibold text-mint-700 bg-mint-100 px-2.5 py-1 rounded-lg">Privado & Local</span>
+                    </div>
+                    <p class="text-xs sm:text-sm text-slate-600 mb-5">
+                        Como você está se sentindo neste momento? Registre seu humor e desabafe brevemente. Os dados ficam salvos apenas no seu próprio navegador.
+                    </p>
+
+                    <!-- Emoji Mood Selector -->
+                    <div class="mb-5">
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Selecione seu sentimento:</label>
+                        <div class="grid grid-cols-5 gap-2 sm:gap-3">
+                            <button type="button" onclick="selectMood('Radiante', '😊')" class="mood-btn p-3 rounded-2xl border border-slate-200 hover:border-amber-400 text-center transition hover:bg-amber-50 flex flex-col items-center">
+                                <span class="text-2xl">😊</span>
+                                <span class="text-[10px] font-semibold text-slate-600 mt-1">Radiante</span>
+                            </button>
+                            <button type="button" onclick="selectMood('Calmo', '😌')" class="mood-btn p-3 rounded-2xl border border-slate-200 hover:border-amber-400 text-center transition hover:bg-amber-50 flex flex-col items-center">
+                                <span class="text-2xl">😌</span>
+                                <span class="text-[10px] font-semibold text-slate-600 mt-1">Calmo</span>
+                            </button>
+                            <button type="button" onclick="selectMood('Neutro', '😐')" class="mood-btn p-3 rounded-2xl border border-slate-200 hover:border-amber-400 text-center transition hover:bg-amber-50 flex flex-col items-center">
+                                <span class="text-2xl">😐</span>
+                                <span class="text-[10px] font-semibold text-slate-600 mt-1">Neutro</span>
+                            </button>
+                            <button type="button" onclick="selectMood('Ansioso', '😟')" class="mood-btn p-3 rounded-2xl border border-slate-200 hover:border-amber-400 text-center transition hover:bg-amber-50 flex flex-col items-center">
+                                <span class="text-2xl">😟</span>
+                                <span class="text-[10px] font-semibold text-slate-600 mt-1">Ansioso</span>
+                            </button>
+                            <button type="button" onclick="selectMood('Triste', '😢')" class="mood-btn p-3 rounded-2xl border border-slate-200 hover:border-amber-400 text-center transition hover:bg-amber-50 flex flex-col items-center">
+                                <span class="text-2xl">😢</span>
+                                <span class="text-[10px] font-semibold text-slate-600 mt-1">Triste</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Note input -->
+                    <div class="mb-4">
+                        <textarea id="mood-note" rows="2" placeholder="Escreva uma reflexão ou o que provocou esse sentimento (opcional)..." class="w-full p-3.5 text-sm rounded-2xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-400 resize-none bg-slate-50/50"></textarea>
+                    </div>
+
+                    <div class="flex justify-between items-center mb-6">
+                        <span id="selected-mood-label" class="text-xs font-semibold text-amber-800">Nenhum humor selecionado</span>
+                        <button onclick="saveMoodEntry()" class="px-5 py-2.5 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-xs transition shadow">
+                            Salvar Registro
+                        </button>
+                    </div>
+
+                    <!-- Mood History Log -->
+                    <div class="border-t border-slate-100 pt-4">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500">Histórico Recente</h4>
+                            <button onclick="clearMoodHistory()" class="text-xs text-red-500 hover:underline">Limpar Histórico</button>
+                        </div>
+                        <div id="mood-history-list" class="space-y-2 max-h-48 overflow-y-auto pr-1">
+                            <!-- Entries injected by JS -->
+                            <p class="text-xs text-slate-400 text-center py-4">Nenhum registro ainda. Comece selecionando como você se sente hoje.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- TOOL 4: TOCADOR DE SONS RELAXANTES (WEB AUDIO API) -->
+                <div id="sons" class="lg:col-span-5 bg-white p-6 sm:p-8 rounded-3xl border border-amber-200 shadow-md flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🎧</span>
+                                <h3 class="text-xl font-bold text-slate-800">Sons Relaxantes Autônomos</h3>
+                            </div>
+                            <span class="text-xs font-semibold text-slate-500 bg-slate-100 px-2.5 py-1 rounded-lg">Web Audio API</span>
+                        </div>
+                        <p class="text-xs sm:text-sm text-slate-600 mb-5">
+                            Gerador sintético de áudio em tempo real para acalmar a mente e auxiliar no foco.
+                        </p>
+
+                        <!-- Sound Player Track Buttons -->
+                        <div class="space-y-3">
+                            <!-- Rain track -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🌧️</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Chuva Suave</p>
+                                        <p class="text-[11px] text-slate-500">Ruído marrom filtrado</p>
+                                    </div>
+                                </div>
+                                <button onclick="toggleAudioTrack('rain')" id="btn-sound-rain" class="px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-xl text-xs transition">
+                                    Tocar
+                                </button>
+                            </div>
+
+                            <!-- Ocean waves track -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🌊</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Ondas do Mar</p>
+                                        <p class="text-[11px] text-slate-500">Modulação de maré serena</p>
+                                    </div>
+                                </div>
+                                <button onclick="toggleAudioTrack('ocean')" id="btn-sound-ocean" class="px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-xl text-xs transition">
+                                    Tocar
+                                </button>
+                            </div>
+
+                            <!-- Calm tone track -->
+                            <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <span class="text-xl">🧘‍♀️</span>
+                                    <div>
+                                        <p class="text-sm font-bold text-slate-800">Tom Harmônico 432Hz</p>
+                                        <p class="text-[11px] text-slate-500">Onda senoidal meditativa</p>
+                                    </div>
+                                </div>
+                                <button onclick="toggleAudioTrack('tone')" id="btn-sound-tone" class="px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-xl text-xs transition">
+                                    Tocar
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Volume slider & status -->
+                    <div class="mt-6 pt-4 border-t border-slate-100">
+                        <div class="flex items-center justify-between text-xs font-semibold text-slate-600 mb-2">
+                            <span>Volume Geral</span>
+                            <span id="volume-val">50%</span>
+                        </div>
+                        <input id="volume-slider" type="range" min="0" max="1" step="0.05" value="0.5" oninput="updateMasterVolume(this.value)" class="w-full accent-amber-500 cursor-pointer">
+                        <p class="text-[10px] text-slate-400 text-center mt-2">Áudio gerado matematicamente pelo navegador sem dependências externas.</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- SECTION 3: MAPA DE APOIO E INFORMAÇÃO -->
+        <section id="onde-buscar-ajuda" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+            <div class="bg-white p-6 sm:p-10 rounded-3xl border border-amber-200 shadow-md">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-wider text-amber-800 bg-amber-100 px-3 py-1 rounded-full">Rede de Saúde Mental</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 mt-2">Onde Buscar Ajuda Gratuita?</h2>
+                        <p class="text-slate-600 text-sm sm:text-base mt-1">Conheça os equipamentos do SUS e instituições que oferecem suporte psicológico gratuito ou a valor social.</p>
+                    </div>
+
+                    <!-- Search and filter -->
+                    <div class="w-full md:w-auto flex flex-col sm:flex-row gap-2">
+                        <input type="text" id="help-search" oninput="filterHelpList()" placeholder="Buscar por nome ou cidade..." class="p-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-400 min-w-[200px]">
+                        <select id="help-category" onchange="filterHelpList()" class="p-2.5 text-xs sm:text-sm rounded-xl border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-400 bg-white">
+                            <option value="todos">Todas as categorias</option>
+                            <option value="caps">CAPS (Centros de Atenção)</option>
+                            <option value="clinica">Clínicas-Escola (Faculdades)</option>
+                            <option value="ubs">UBS / Postos de Saúde</option>
+                            <option value="emergencia">Emergência e Linhas</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- List of locations / support channels -->
+                <div id="help-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    
+                    <!-- Item 1: CAPS -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="caps">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🏥</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-900 bg-amber-200 px-2 py-0.5 rounded">SUS - Porta Aberta</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">CAPS (Centros de Atenção Psicossocial)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Unidades públicas de saúde mental que atendem pessoas com sofrimento psíquico grave. Acesso direto, sem necessidade de encaminhamento.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>📍 Onde encontrar: Procure a unidade CAPS da sua região</p>
+                            <p>🕒 Horário: Segunda a Sexta (24h nos CAPS III)</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 2: Clínicas Escola -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="clinica">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🎓</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-teal-800 bg-teal-100 px-2 py-0.5 rounded">Universidades</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Clínicas-Escola de Psicologia</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Serviços de psicoterapia oferecidos por estudantes dos últimos anos de Psicologia com supervisão de professores universitários.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>📍 Onde encontrar: Faculdades e Universidades com curso de Psicologia</p>
+                            <p>💰 Custo: Gratuito ou valor social simbólico</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 3: UBS -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="ubs">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🩺</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-blue-800 bg-blue-100 px-2 py-0.5 rounded">Atenção Básica</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Unidades Básicas de Saúde (UBS)</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Porta de entrada do SUS. Médicos da família e equipes multidisciplinares acolhem e realizam o encaminhamento necessário.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>📍 Onde encontrar: Posto de saúde do seu bairro</p>
+                            <p>📞 Dúvidas do SUS: Ligue 136 (Disque Saúde)</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: CVV 188 -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="emergencia">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">💛</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-amber-950 bg-amber-300 px-2 py-0.5 rounded">Apoio Emocional</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">CVV - Disque 188</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Atendimento telefônico totalmente gratuito, disponível 24 horas por dia, todos os dias da semana.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>📞 Telefone: 188 (ligação gratuita)</p>
+                            <p>🌐 Site: www.cvv.org.br</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 5: SAMU e UPA -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="emergencia">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🚑</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-red-800 bg-red-100 px-2 py-0.5 rounded">Crise Imediata</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">UPAs e Hospitais de Urgência</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Para momentos de crise aguda, ideação suicida grave ou episódios de surto que necessitem de intervenção imediata.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>📞 SAMU: 192</p>
+                            <p>📍 UPA mais próxima ou Pronto-Socorro</p>
+                        </div>
+                    </div>
+
+                    <!-- Item 6: Mapa do Acolhimento -->
+                    <div class="help-card p-5 rounded-2xl bg-cream-50 border border-amber-200 hover:shadow-md transition" data-category="clinica">
+                        <div class="flex items-center gap-2 mb-2">
+                            <span class="text-lg">🌐</span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-indigo-800 bg-indigo-100 px-2 py-0.5 rounded">Rede Voluntária</span>
+                        </div>
+                        <h4 class="font-bold text-slate-800 text-base mb-1">Mapa da Saúde Mental</h4>
+                        <p class="text-xs text-slate-600 leading-relaxed mb-3">
+                            Plataformas online que conectam pessoas a psicólogos voluntários e atendimentos a custos sociais reduzidos.
+                        </p>
+                        <div class="text-xs font-semibold text-slate-700 bg-white p-2.5 rounded-xl border border-amber-100 space-y-1">
+                            <p>🔗 mapadasaudemental.com.br</p>
+                            <p>🔗 mapadoacolhimento.org</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- EDUCATIONAL SECTION: MITOS E VERDADES -->
+        <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 mb-12">
+            <div class="bg-gradient-to-r from-amber-100/80 via-amber-50 to-cream-100 p-6 sm:p-8 rounded-3xl border border-amber-200">
+                <h3 class="text-xl font-bold text-slate-800 mb-4 flex items-center gap-2">
+                    <span>💡</span> Como Ajudar Alguém em Sofrimento?
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs sm:text-sm">
+                    <div class="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm">
+                        <span class="font-bold text-amber-800 block mb-1">1. Ouça Sem Julgar</span>
+                        <p class="text-slate-600">Evite frases como "isso é bobagem" ou "falta de fé". Apenas escute com empatia e acolhimento.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm">
+                        <span class="font-bold text-amber-800 block mb-1">2. Incentive a Ajuda Profissional</span>
+                        <p class="text-slate-600">Ofereça-se para acompanhar a pessoa até um CAPS, UBS ou consulta psicológica.</p>
+                    </div>
+                    <div class="bg-white p-4 rounded-2xl border border-amber-100 shadow-sm">
+                        <span class="font-bold text-amber-800 block mb-1">3. Não Deixe a Pessoa Sozinha</span>
+                        <p class="text-slate-600">Em situações de crise aguda, permaneça com a pessoa e acione o CVV (188) ou o SAMU (192).</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- MANDATORY LEGAL FOOTER -->
+    <footer class="bg-slate-900 text-slate-300 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
+            
+            <div class="flex flex-col md:flex-row items-center justify-between gap-4 pb-6 border-b border-slate-800">
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-amber-400 text-amber-950 font-bold flex items-center justify-center text-xl">
+                        💛
+                    </div>
+                    <div>
+                        <span class="text-lg font-bold text-white tracking-tight">Setembro Amarelo</span>
+                        <p class="text-xs text-slate-400">Projeto Acadêmico de Conscientização e Apoio Emocional</p>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4 text-xs">
+                    <a href="tel:188" class="text-amber-400 hover:text-amber-300 font-semibold underline">Ligue 188 (CVV)</a>
+                    <span>•</span>
+                    <a href="https://cvv.org.br" target="_blank" rel="noopener" class="text-amber-400 hover:text-amber-300 font-semibold underline">cvv.org.br</a>
+                </div>
+            </div>
+
+            <!-- Mandatory academic statement box -->
+            <div class="bg-slate-800/80 p-4 rounded-2xl text-xs text-slate-400 leading-relaxed border border-slate-700/60">
+                <p class="font-bold text-amber-400 mb-1">⚠️ AVISO LEGAL E OBRIGATÓRIO DA ATIVIDADE:</p>
+                <p>
+                    Esta aplicação web é um **projeto acadêmico** desenvolvido exclusivamente para fins educacionais e de conscientização sobre a prevenção do suicídio (Setembro Amarelo). **Este site não substitui, em nenhuma hipótese, o atendimento e acompanhamento psicológico ou psiquiátrico profissional.** Se você ou alguém que você conhece está passando por uma crise emocional, busque ajuda imediatamente ligando para o **CVV no número 188** (ligação gratuita 24h) ou dirigindo-se ao posto de saúde/pronto-socorro mais próximo.
+                </p>
+            </div>
+
+            <div class="text-center text-[11px] text-slate-500 pt-2">
+                <p>© 2026 Setembro Amarelo - Apoio Emocional & Valorização da Vida. Desenvolvido para a atividade prática de Sistemas.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Toast Notification for clipboard feedback -->
+    <div id="toast" class="fixed bottom-5 right-5 bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl text-xs font-semibold hidden items-center gap-2 z-50 transition-all transform">
+        <span>✨ Texto copiado com sucesso!</span>
+    </div>
+
+    <script>
+        // MOTIVATIONAL MESSAGES DATASET
+        const MOTIVATIONAL_MESSAGES = [
+            { quote: "Você não precisa carregar tudo sozinho. Pedir ajuda é um ato de profunda coragem e amor próprio.", author: "Acolhimento Setembro Amarelo" },
+            { quote: "Mesmo a noite mais escura e longa terminará com o nascer do sol. A tempestade vai passar.", author: "Mensagem de Esperança" },
+            { quote: "Sua história ainda tem muitos capítulos bonitos para serem escritos. Dê tempo ao tempo.", author: "Valorização da Vida" },
+            { quote: "Respire fundo. O que você está sentindo agora é válido, mas não define quem você é por inteiro.", author: "Prática de Autocuidado" },
+            { quote: "Existem pessoas dispostas a te ouvir com carinho e sem nenhum julgamento. Não guarde tudo para si.", author: "Rede de Apoio" },
+            { quote: "Permita-se descansar. Pausar não significa desistir, significa recarregar as energias.", author: "Apoio Emocional" },
+            { quote: "Sua presença faz diferença no mundo. Cada pequeno passo que você dá hoje é uma vitória.", author: "Conscientização" }
+        ];
+
+        // Mobile Menu Functionality
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        function generateMotivationalMessage() {
+            const randomIndex = Math.floor(Math.random() * MOTIVATIONAL_MESSAGES.length);
+            const item = MOTIVATIONAL_MESSAGES[randomIndex];
+            
+            const quoteEl = document.getElementById('motivational-quote');
+            const authorEl = document.getElementById('quote-author');
+
+            // Smooth fade transition
+            quoteEl.style.opacity = '0';
+            setTimeout(() => {
+                quoteEl.textContent = `"${item.quote}"`;
+                authorEl.textContent = `— ${item.author}`;
+                quoteEl.style.opacity = '1';
+            }, 150);
+        }
+
+        function copyQuoteToClipboard() {
+            const quoteText = document.getElementById('motivational-quote').textContent;
+            
+            // Clipboard fallback logic
+            const tempInput = document.createElement('textarea');
+            tempInput.value = quoteText;
+            document.body.appendChild(tempInput);
+            tempInput.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempInput);
+
+            showToast("Mensagem copiada para a área de transferência!");
+        }
+
+        function showToast(message) {
+            const toast = document.getElementById('toast');
+            toast.children[0].textContent = '✨ ' + message;
+            toast.classList.remove('hidden');
+            toast.classList.add('flex', 'toast-enter');
+
+            setTimeout(() => {
+                toast.classList.add('hidden');
+                toast.classList.remove('flex', 'toast-enter');
+            }, 3000);
+        }
+
+        // BREATHING EXERCISE LOGIC (4s Inhale, 7s Hold, 8s Exhale)
+        let breathingInterval = null;
+        let breathingPhase = 'stopped'; // 'inhale', 'hold', 'exhale', 'stopped'
+        let breathTimeLeft = 4;
+        let completedCycles = 0;
+
+        function toggleBreathing() {
+            const btn = document.getElementById('btn-start-breath');
+            if (breathingInterval) {
+                // Pause
+                clearInterval(breathingInterval);
+                breathingInterval = null;
+                btn.textContent = 'Continuar Respiração';
+                btn.className = 'px-6 py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-sm transition shadow';
+            } else {
+                // Start
+                btn.textContent = 'Pausar Respiração';
+                btn.className = 'px-6 py-3 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-sm transition shadow';
+                if (breathingPhase === 'stopped') {
+                    startInhalePhase();
+                }
+                breathingInterval = setInterval(runBreathingCycle, 1000);
+            }
+        }
+
+        function startInhalePhase() {
+            breathingPhase = 'inhale';
+            breathTimeLeft = 4;
+            updateBreathingUI("Inspire pelo nariz...", breathTimeLeft, "scale-125 bg-amber-300 border-amber-500");
+        }
+
+        function startHoldPhase() {
+            breathingPhase = 'hold';
+            breathTimeLeft = 7;
+            updateBreathingUI("Segure o ar...", breathTimeLeft, "scale-125 bg-amber-200 border-amber-400");
+        }
+
+        function startExhalePhase() {
+            breathingPhase = 'exhale';
+            breathTimeLeft = 8;
+            updateBreathingUI("Expire pela boca...", breathTimeLeft, "scale-90 bg-amber-100 border-amber-300");
+        }
+
+        function runBreathingCycle() {
+            breathTimeLeft--;
+            document.getElementById('breath-timer').textContent = `${breathTimeLeft}s`;
+
+            if (breathTimeLeft <= 0) {
+                if (breathingPhase === 'inhale') {
+                    startHoldPhase();
+                } else if (breathingPhase === 'hold') {
+                    startExhalePhase();
+                } else if (breathingPhase === 'exhale') {
+                    completedCycles++;
+                    document.getElementById('breath-cycles').textContent = completedCycles;
+                    startInhalePhase();
+                }
+            }
+        }
+
+        function updateBreathingUI(text, time, circleClasses) {
+            const circle = document.getElementById('breath-circle');
+            const textEl = document.getElementById('breath-text');
+            const timerEl = document.getElementById('breath-timer');
+
+            textEl.textContent = text;
+            timerEl.textContent = `${time}s`;
+
+            // Reset scale classes
+            circle.className = `breath-circle w-40 h-40 sm:w-48 sm:h-48 rounded-full border-4 flex flex-col items-center justify-center shadow-lg transition-all duration-1000 transform ${circleClasses}`;
+        }
+
+        function resetBreathing() {
+            if (breathingInterval) {
+                clearInterval(breathingInterval);
+                breathingInterval = null;
+            }
+            breathingPhase = 'stopped';
+            breathTimeLeft = 4;
+            completedCycles = 0;
+            document.getElementById('breath-cycles').textContent = '0';
+            document.getElementById('btn-start-breath').textContent = 'Iniciar Respiração';
+            document.getElementById('btn-start-breath').className = 'px-6 py-3 bg-amber-400 hover:bg-amber-500 text-amber-950 font-bold rounded-xl text-sm transition shadow';
+            updateBreathingUI("Pronto?", 4, "scale-100 bg-amber-200 border-amber-400");
+        }
+
+        // MOOD TRACKER LOGIC
+        let currentSelectedMood = null;
+        let currentSelectedEmoji = '';
+
+        function selectMood(moodName, emoji) {
+            currentSelectedMood = moodName;
+            currentSelectedEmoji = emoji;
+
+            document.getElementById('selected-mood-label').textContent = `Selecionado: ${emoji} ${moodName}`;
+
+            // Highlight button styling
+            const buttons = document.querySelectorAll('.mood-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-amber-100', 'border-amber-400', 'ring-2', 'ring-amber-300');
+            });
+
+            event.currentTarget.classList.add('bg-amber-100', 'border-amber-400', 'ring-2', 'ring-amber-300');
+        }
+
+        function saveMoodEntry() {
+            if (!currentSelectedMood) {
+                showToast("Por favor, selecione um sentimento antes de salvar!");
+                return;
+            }
+
+            const noteInput = document.getElementById('mood-note');
+            const noteText = noteInput.value.trim();
+
+            const entry = {
+                id: Date.now(),
+                date: new Date().toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit', hour: '2-digit', minute: '2-digit' }),
+                mood: currentSelectedMood,
+                emoji: currentSelectedEmoji,
+                note: noteText
+            };
+
+            const existingEntries = JSON.parse(localStorage.getItem('setembro_humor_entries') || '[]');
+            existingEntries.unshift(entry); // Add to start
+            localStorage.setItem('setembro_humor_entries', JSON.stringify(existingEntries));
+
+            noteInput.value = '';
+            renderMoodHistory();
+            showToast("Registro de humor salvo com sucesso!");
+        }
+
+        function renderMoodHistory() {
+            const historyContainer = document.getElementById('mood-history-list');
+            const entries = JSON.parse(localStorage.getItem('setembro_humor_entries') || '[]');
+
+            if (entries.length === 0) {
+                historyContainer.innerHTML = `<p class="text-xs text-slate-400 text-center py-4">Nenhum registro ainda. Comece selecionando como você se sente hoje.</p>`;
+                return;
+            }
+
+            historyContainer.innerHTML = entries.map(item => `
+                <div class="p-3 rounded-xl bg-slate-50 border border-slate-100 flex items-start justify-between text-xs">
+                    <div class="flex items-start gap-2.5">
+                        <span class="text-xl">${item.emoji}</span>
+                        <div>
+                            <div class="flex items-center gap-2">
+                                <strong class="text-slate-800 font-bold">${item.mood}</strong>
+                                <span class="text-[10px] text-slate-400">${item.date}</span>
+                            </div>
+                            ${item.note ? `<p class="text-slate-600 mt-0.5">${escapeHtml(item.note)}</p>` : ''}
+                        </div>
+                    </div>
+                    <button onclick="deleteMoodEntry(${item.id})" class="text-slate-400 hover:text-red-500 font-bold px-1" title="Excluir">✕</button>
+                </div>
+            `).join('');
+        }
+
+        function deleteMoodEntry(id) {
+            let entries = JSON.parse(localStorage.getItem('setembro_humor_entries') || '[]');
+            entries = entries.filter(e => e.id !== id);
+            localStorage.setItem('setembro_humor_entries', JSON.stringify(entries));
+            renderMoodHistory();
+        }
+
+        function clearMoodHistory() {
+            if (localStorage.getItem('setembro_humor_entries')) {
+                localStorage.removeItem('setembro_humor_entries');
+                renderMoodHistory();
+                showToast("Histórico de humor limpo.");
+            }
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        // WEB AUDIO API RELAXING SOUND GENERATOR
+        let audioCtx = null;
+        let masterGain = null;
+        let activeSounds = {
+            rain: null,
+            ocean: null,
+            tone: null
+        };
+
+        function initAudioContext() {
+            if (!audioCtx) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                audioCtx = new AudioContext();
+                masterGain = audioCtx.createGain();
+                masterGain.gain.value = 0.5;
+                masterGain.connect(audioCtx.destination);
+            }
+            if (audioCtx.state === 'suspended') {
+                audioCtx.resume();
+            }
+        }
+
+        function updateMasterVolume(val) {
+            document.getElementById('volume-val').textContent = `${Math.round(val * 100)}%`;
+            if (masterGain) {
+                masterGain.gain.setValueAtTime(parseFloat(val), audioCtx ? audioCtx.currentTime : 0);
+            }
+        }
+
+        function toggleAudioTrack(trackName) {
+            initAudioContext();
+            const btn = document.getElementById(`btn-sound-${trackName}`);
+
+            if (activeSounds[trackName]) {
+                // Stop track
+                stopSoundTrack(trackName);
+                btn.textContent = 'Tocar';
+                btn.className = 'px-4 py-2 bg-amber-200 hover:bg-amber-300 text-amber-950 font-bold rounded-xl text-xs transition';
+            } else {
+                // Start track
+                startSoundTrack(trackName);
+                btn.textContent = 'Pausar';
+                btn.className = 'px-4 py-2 bg-slate-800 hover:bg-slate-900 text-white font-bold rounded-xl text-xs transition';
+            }
+        }
+
+        function startSoundTrack(trackName) {
+            if (trackName === 'rain') {
+                // Create Rain Sound (Pink/Brown noise filter)
+                const bufferSize = audioCtx.sampleRate * 2;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = buffer.getChannelData(0);
+                let lastOut = 0.0;
+                for (let i = 0; i < bufferSize; i++) {
+                    const white = Math.random() * 2 - 1;
+                    output[i] = (lastOut + (0.02 * white)) / 1.02;
+                    lastOut = output[i];
+                    output[i] *= 3.5;
+                }
+
+                const noiseNode = audioCtx.createBufferSource();
+                noiseNode.buffer = buffer;
+                noiseNode.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 800;
+
+                const gain = audioCtx.createGain();
+                gain.gain.value = 0.3;
+
+                noiseNode.connect(filter);
+                filter.connect(gain);
+                gain.connect(masterGain);
+
+                noiseNode.start();
+                activeSounds.rain = { source: noiseNode, gain: gain };
+            } 
+            else if (trackName === 'ocean') {
+                // Create Ocean Waves (Low noise with Sine modulation LFO)
+                const bufferSize = audioCtx.sampleRate * 2;
+                const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+                const output = buffer.getChannelData(0);
+                for (let i = 0; i < bufferSize; i++) {
+                    output[i] = Math.random() * 2 - 1;
+                }
+
+                const noiseNode = audioCtx.createBufferSource();
+                noiseNode.buffer = buffer;
+                noiseNode.loop = true;
+
+                const filter = audioCtx.createBiquadFilter();
+                filter.type = 'lowpass';
+                filter.frequency.value = 400;
+
+                const gainNode = audioCtx.createGain();
+
+                // LFO to modulate wave intensity
+                const lfo = audioCtx.createOscillator();
+                lfo.frequency.value = 0.12; // Wave every ~8 seconds
+                const lfoGain = audioCtx.createGain();
+                lfoGain.gain.value = 0.25;
+
+                lfo.connect(lfoGain);
+                lfoGain.connect(gainNode.gain);
+
+                noiseNode.connect(filter);
+                filter.connect(gainNode);
+                gainNode.connect(masterGain);
+
+                noiseNode.start();
+                lfo.start();
+                activeSounds.ocean = { source: noiseNode, lfo: lfo, gain: gainNode };
+            }
+            else if (trackName === 'tone') {
+                // Create Harmonic Sine Warm Tone (432Hz harmonic pad)
+                const osc1 = audioCtx.createOscillator();
+                const osc2 = audioCtx.createOscillator();
+                
+                osc1.type = 'sine';
+                osc1.frequency.value = 216; // Sub harmonic
+                
+                osc2.type = 'sine';
+                osc2.frequency.value = 432; // Root 432Hz
+
+                const gainNode = audioCtx.createGain();
+                gainNode.gain.value = 0.15;
+
+                osc1.connect(gainNode);
+                osc2.connect(gainNode);
+                gainNode.connect(masterGain);
+
+                osc1.start();
+                osc2.start();
+
+                activeSounds.tone = { osc1: osc1, osc2: osc2, gain: gainNode };
+            }
+        }
+
+        function stopSoundTrack(trackName) {
+            const track = activeSounds[trackName];
+            if (track) {
+                if (track.source) track.source.stop();
+                if (track.lfo) track.lfo.stop();
+                if (track.osc1) track.osc1.stop();
+                if (track.osc2) track.osc2.stop();
+                activeSounds[trackName] = null;
+            }
+        }
+
+        // SEARCH AND FILTER FOR SUPPORT LOCATIONS
+        function filterHelpList() {
+            const searchTerm = document.getElementById('help-search').value.toLowerCase();
+            const categoryTerm = document.getElementById('help-category').value;
+            const cards = document.querySelectorAll('.help-card');
+
+            cards.forEach(card => {
+                const text = card.textContent.toLowerCase();
+                const category = card.getAttribute('data-category');
+
+                const matchesSearch = text.includes(searchTerm);
+                const matchesCategory = (categoryTerm === 'todos' || category === categoryTerm);
+
+                if (matchesSearch && matchesCategory) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+
+        window.onload = function() {
+            renderMoodHistory();
+        };
+    </script>
+</body>
+</html>
