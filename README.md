@@ -17,25 +17,25 @@ Desenvolver uma página web acessível e acolhedora com recursos interativos de 
 
 ## 🛠️ Funcionalidades Implementadas
 
-### 1. 🚨 Direção de Emergência (Botão CVV - Ligue 188)
+### 1. Direção de Emergência (Botão CVV - Ligue 188)
 * Botão em destaque visual fixo no cabeçalho e na hero section.
 * Integração para ligação direta (`tel:188`).
 * Link direto para o chat do **Centro de Valorização da Vida** ([cvv.org.br](https://cvv.org.br/)).
 
-### 2. 🧘 Recursos Interativos de Apoio
+### 2. Recursos Interativos de Apoio
 * **Exercício de Respiração Guiada:** Animação com temporizador (Inspire, Segure, Expire) em ciclo de 4-7-8 para redução de ansiedade.
 * **Gerador de Mensagens Motivacionais:** Seleção aleatória de frases acolhedoras e inspiradoras.
 * **Diário de Humor (*Mood Tracker*):** Registro simples de estados emocionais diários salvos localmente.
 * **Tocador de Sons Relaxantes:** Player de som ambiental sintético/suave (*Sons de Chuva, Floresta e Ondas*) para auxílio na diminuição do estresse.
 
-### 3. 🗺️ Guia de Apoio e Informação
+### 3. Guia de Apoio e Informação
 * Seção informativa completa sobre onde buscar ajuda especializada:
   * **CAPS** (Centros de Atenção Psicossocial).
   * **Clínicas-Escola** de Psicologia em universidades.
   * **Unidades Básicas de Saúde** (UBS / Postos de Saúde).
   * **SAMU 192** e **UPEs/Hospitais de Emergência**.
 
-### 4. 🎨 Design & Usabilidade Empática (UI/UX)
+### 4. Design & Usabilidade Empática (UI/UX)
 * **Paleta Acolhedora:** Uso de tons quentes e suaves (amarelo acolhedor, azul suave e fundos escuros e calmos), evitando cores agressivas.
 * **Layout 100% Responsivo:** Otimizado para dispositivos móveis (smartphones, tablets) e computadores.
 * **Acessibilidade:** Navegação simples, fontes legíveis e alto contraste.
